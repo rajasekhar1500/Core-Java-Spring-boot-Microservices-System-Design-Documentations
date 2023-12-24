@@ -36,3 +36,32 @@ There are Types of injection
 Bean
 
 
+
+
+
+
+
+
+
+
+
+
+SpringBoot:-
+-------------
+* Spring Boot was introduced in April 2014 to reduce some of the burdens while developing a java web application.
+* Before SpringBoot, Developer need to configure a servlet container, establish link between Tomcat and Dispatcher servlet, deploy into a server, define lot of       
+  dependencies
+* But with SpringBoot, we can create Web apps skeletons with in seconds or atleaset 1-2 mins. It helps eleiminating all the configurations we need to do.
+* SpringBoot is now one of the most apreciated projects in the spring ecosystem. It helps us to create Spring apps more efficiently and focus on the business code.
+* SpringBoot is a mandatory skill now due to the latest trends like Full Stack Development, Microservices, Serverless, Containers, Docker etc.
+
+Roles Of Servlets Inside WEB Apps:-
+------------------------------------
+Before Spring:
+	Before spring, devloper has to create a new servlet instance, configure it in the servlet container, and assign it to a specific URL path
+	When the client sends a request, Tomcat calss a method of the servlet associated with the path the client requested. The servlet gets the values on the request 	and builds the response that tomcat sends back to the client.
+
+With Spring:
+	With spring, it defines a servlet called Dispatcher Servlet which maintain all the URL mapping inside a web applicaiton.
+	The Servlet container calls this dispatcer Servelet for any client request, allowing the servlet to manage the request and the response. This way Spring 	internally does all the magic for developers without the need of defining the servlets inside a Web app.
+
