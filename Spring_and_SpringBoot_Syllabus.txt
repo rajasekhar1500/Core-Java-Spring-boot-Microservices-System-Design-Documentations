@@ -1,0 +1,90 @@
+1.Introduction to Spring Boot 
+	What is spring boot, and why it is used?
+        Inversion of Control
+2. Dependency Injection 
+	what is dependency injection?
+	Types of Dependency injections
+3. Bean Scope and LifeCycle
+	Understanding Bean and Bean Scope
+	Types of Bean Scopes
+	Understanding the life cycle of a Bean
+	Life Cycle Hooks
+4. Spring Annotations
+	What is Annotation?
+	Spring Fundamental principle using Annotations 
+	@SpringBootApplication annotation 
+	YAML
+5. MVC Core principles
+	Understanding MVC and its architecture
+	Creating controllers in Spring MVC
+	Creating views in Spring MVC Application
+	Understanding different Layers
+	Validating Objects in Spring MVC Applications
+6. MVC and Web
+	What is Query Param?
+	ModelMap, Model and View
+	Understanding path param
+7. Rest API: Get and Post
+	Web Service
+	Restful Web Service
+	Creating Get Request
+	Creating Post Request
+	Postman
+8. Rest API: Put and Delete
+	Creating Put Request
+	Creating Delete Request
+	Validations for Restful Services
+9. Project
+	Movie Booking Application 
+10. RestTemplate
+	Rating Service
+	HTTP Protocols
+	Error Handling and Message Converters
+11. Hibernate and CRUD Operation 
+	ORM Framework
+	@Transaction and @Session 
+	Demo Project
+	CRUD Operation Related Database
+12. Hibernate and Relationships
+	Understanding Relationship
+	Types of Relationships
+	H2Database
+13. Project 
+	Expense Manager
+14. Spring Data JPA
+	Spring Data JPA
+	Spring Data Interfaces
+	APIs & CRUD Repository
+15. Spring Data JPA and Queries
+	Understanding the query in Java
+	Creating Custom Query
+16. Project 
+	E-Voting Application 
+17. Introduction to Spring Security
+	Introduction to Spring Security
+	Configuring Spring Security
+18. User Authentication and Authorization 
+	User Authentication
+	User Autherization 
+19. Password Security and Session Management
+	Password Encoding
+	Session Management
+20. Spring Seurity Advanced Topics 
+	CSRF and XSS
+	Advanced Topics in Spring Security
+21. Project 
+	Secure Online Banking Application
+22. Spring Boot Actuator and Dev Tools
+	Actuator and Dev Tools
+23. Logging and Metrics
+	Logging and Metrics in Spring Boot
+24. JUnit Testing
+	Introduction to testing and JUnit
+	Junit annotations
+	Mocking databases
+25. Microservices 
+	Monolothic vs Microservic
+	Principle and advantages of Microservices
+	Demo Microservice project
+26. Capstone Project
+	E-Commerce Application
