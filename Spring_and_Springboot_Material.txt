@@ -1,0 +1,38 @@
+IoC Container:-
+----------------
+The ApplicationContext interface represents the SpringIoC container and is responsible for instantiating, configuring and assmbling the beans
+The container get its instructions on what objects to instantiate, configure, assemble by reading configuration metadata. 
+
+as a developer we are not responsible to do instantiate or configure or assemble the beans in our application, we are just giving the instructions throgh metadata configuration in the form of xml or java annotations or java code. every approach is same only that is as per developer choice. my favourate is java based configuration
+
+
+Dependency Injection:-
+----------------------
+Dependency injection is a design pattern used in software development to achieve the Inversion of Control principle.In IoC, the control flow is inverted compared into traditional programming. Instead of component controlling the flow of the program, the control flow is delegated to an external container.
+Dependency Injection is a specific implementation of IoC and involves injecting the dependencies of a class from the outside rather than creating them within the class.
+
+Benifits of Dependency Injection:
+
+1. Decoupling:
+ Dependencies are not hardcoded within a class, leading to reduce coupling between classes.
+2. Flexibility and Configurability:
+ Easily switch implementations of dependencies or configure different instances.
+3. Testablity:
+ Easier unit testing with mock dependencies injected during testing.
+4. Readability and maintainability:
+ Code more readable as dependencies are explicit and easily visible.
+
+There are Types of injection 
+1. Constructor Injection
+	* Dependencies are injected trhought the class constructor.
+	* The class declares it's dependencies as constructor parameters.
+2. Setter Injection
+	* Dependencies are injected through setter methods
+	* Allows for optional dependencies since not all setters need to be called.
+3. Method Injection
+	* Dependencies are injected through methods.
+	* Similar to setter injection on a per-method basis.
+
+Bean
+
+
