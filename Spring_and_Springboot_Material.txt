@@ -55,6 +55,62 @@ SpringBoot:-
 * SpringBoot is now one of the most apreciated projects in the spring ecosystem. It helps us to create Spring apps more efficiently and focus on the business code.
 * SpringBoot is a mandatory skill now due to the latest trends like Full Stack Development, Microservices, Serverless, Containers, Docker etc.
 
+Before SpringBoot:
+-----------------
+* Configure Maven/Gradle project with all the dependencies needed
+* Understand how servlets work & configure the DispatcherServlet inside web.xml
+* Package the web application into a WAR file. Deploy the same into a server 
+* Deal with complicated class loading strategies, application monitoring management
+
+After SpringBoot:-
+--------------------
+* Spring Boot automatically configures the bare minimum components of a spring application.
+* Spring Boot applicaitons embed a web server so that we do not require an external application server.
+* Spring Boot provides serveral useful production-ready featrues out of the box to monitor and maanage the application.
+
+Spring Boot Important Features:-
+--------------------------------
+
+SpringBoot starters:
+	* Spring Boot groups related dependencies used for a specific purpose as starter projects. We don't need to figure out all the must-have dependencies you need 	  to add your project for one particular purpose nor which versions you shoud use for compatibility.
+       	  Example : spring-boot-starter-web
+AutoConfiguration:
+	* Based on the dependencies present in the classpath, spring boot guess and auto configure the spring beans, property configuration etc. However, auto-	  	  configuration backs away from the default configuration if it detects user-configured beans with custom configurations 
+	* To achieve auto configuration spring boot follows the convention over-configuration principle.
+Actuator & DevTools:
+	* Spring boot provides a pre-defined list of actuator endpoints. Using this production ready endpoints, we can monitor app health, metrics etc.
+	* DevTools includes features such as automatic detection of application code changes, LiveReload server to automatically refresh any HTML changes to the 	 browser all w/o server restart.
+SpringBoot Devtolls:
+	* The Spring Boot DevTools provides features like Automatic restart & LiveReload that make the application development experience a little more pleasant for 	  developers.
+	* It can be added into any of the SpringBoot project by adding maven dependency 
+	  Example: spring-boot-devtools
+
+	* DevTools maintains 2 class loaders. One with classes that doesn't change and other one with classes that change. When restart needed it only reload the  	  second class loader which makes restarts faster as well.
+	* DevTools includes an embedded LiveReload server that can be used to trigger a browser refresh when a resource is changed. LiveReload related browser 	  	  extensions are freely available for chrome, Firfox...
+	* DevTools triggers a restart when ever a build is triggered through IDE or by maven commands etc.
+	* DevTools disables the caching options by default during development.
+	* Repackaged archives do not contain DevTools by default.
+
+Introduction To MVC Pattern:-
+-----------------------------
+* Model view controller disign pattern: Separation of concersn to achieve loose coupliing.
+Controller:
+	*Controls the flow & decides which business logic needs to be executed. It acts as a brain inside MVC pattern.
+View:
+	* Represents UI and usually takes data from the controller and display it with the help of HTML pages.
+Model:
+	* Represents the data of the application like name, age, students list etc. It stores & manages the data.
+	
+MVC Architecture & Internal Flow:-
+--------------------------------
+1. Web Client makes HTTP request
+2. Servlet containers like Tomcat accepts the HTTP requests and handovers the Servlet Request to Dispatcher Servlet inside spring Web App.
+3. The Dispatcher Servlet will check with the Handler Mapping to identify the controller and method names to invode based on the HTTP method, path etc.
+4. The Dispatcher Servlet will invoke the corresponding controller & method. After execution, the controller will provide a view name and data that needs to rendered in the view.
+5. The Dispatcher servlet with the hep of a component called View Resolver finds the view and render it with the data provided by the controller.
+6. The Servlet Container or Tomcat accepts the Servlet Response from the Dispatcher servlet and convert the same to HTTP response before rturning to the client.
+7. The browser or client intercepts the HTTP response and display the view, data etc.
+
 Roles Of Servlets Inside WEB Apps:-
 ------------------------------------
 Before Spring:
