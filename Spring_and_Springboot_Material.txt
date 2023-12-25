@@ -33,9 +33,31 @@ There are Types of injection
 	* Dependencies are injected through methods.
 	* Similar to setter injection on a per-method basis.
 
-Bean
+Bean Scopes inside Spring:-
+---------------------------
+1. Singleton		2.. ProtoType		3.. Request 		4..Session		5..Application
 
 
+1. Singleton
+2. Prototype
+3. Request:
+-----------
+	* spring creates an instance of the bean class for every HTTP request. The instance exists only for that specific HTTP request.
+	* Spring creates a lot of instances of this bean in the app's memory for each HTTP request. so these type of beans are short lived.
+	* Since Spring creates a lot of instances, please make sure to avoid time consuming logic while creating the instance.
+	* Can be considered for the scenarios where the data needs to be reset after new request or page refresh etc..
+4. Session:
+----------
+	* Spring creates an instance and keeps the instance in the server's memory for the full HTTP session. Spring links the instance in the context with the 	  client's session
+	* Session scoped beans have longer life & they are less frequently garbage collected.
+	* Avoid keeping too much information inside session data as it impacts performance. Never store sensitive information as well.
+	* Can be considered for the scenarios where the same data needs to be accessed across multiple pages like user information.
+5. Application:
+--------------
+	* The instance is unique in the app's context, and it's available while the app is running.
+	* In the application scope, Spring creates a bean instance per web application runtime.
+	* It is similar to singleton scope, with one major difference. Singleton scoped bean is singleton per ApplicationContext where application scoped bean is 	  singleton per ServletContext.
+	* Can be considered for the scenarios where we want to store Drop Down values, Reference table values which won't change  the users.
 
 
 
@@ -111,6 +133,31 @@ MVC Architecture & Internal Flow:-
 6. The Servlet Container or Tomcat accepts the Servlet Response from the Dispatcher servlet and convert the same to HTTP response before rturning to the client.
 7. The browser or client intercepts the HTTP response and display the view, data etc.
 
+LOMOBOK:-
+---------
+* Lombok will reduce boilorplate code inside POJO classes like getters & setters.
+* Lombok which is a java library provides you with several annotations aimed avoiding writing java code known to be repeetitive and / or boilerplate.
+* It can be added into any of the Java project by adding the maven dependency
+	<dependency>
+		<groupId>org.projectlombok<groupId>
+		<artifactId>lombok<artifactId>
+	</dependency>
+* Project Lombok works by plugging into your build process. Then, it will auto-generate the java bytecode into your .class files required to implement the desired              behavior, based on the annotations you used.
+* Most commonly used Lombok Annotations,
+	@Getter, @Setter
+	@NoArgsConstructor
+	@RequiredArgsConstructor
+	@AllArgsConstructor
+	@ToString, @EqualsAndHashCode
+	@Data
+@Data is shortcut annotation that combines the features of below annotations together,
+	@ToString
+	@EqualsAndHashCode
+	@Getter, @Setter
+	@RequiredArgsConstructor
+
+
+
 Roles Of Servlets Inside WEB Apps:-
 ------------------------------------
 Before Spring:
@@ -120,4 +167,101 @@ Before Spring:
 With Spring:
 	With spring, it defines a servlet called Dispatcher Servlet which maintain all the URL mapping inside a web applicaiton.
 	The Servlet container calls this dispatcer Servelet for any client request, allowing the servlet to manage the request and the response. This way Spring 	internally does all the magic for developers without the need of defining the servlets inside a Web app.
+
+
+
+@RequestParam annotation:-
+-------------------------
+* In Spring @RequestParam is used to map either query parameters or form data.
+* For example, if we want to get parameters value from HTTP GET requested URL then we can use @RequestParam annotation like in below example:
+	@GetMapping("/holidays")
+	public String displayHolidays(@RequestParam(required = false) boolean festival,
+					@RequestParam(required = false) boolean federal) {
+		return "holidays.html";
+	}
+* The @RequestParam annotation supports attributes like name, requred, value, default value. We can use them in our application based on the requirement.
+* The name attribute indicaes the name of the request parameter to bind to.
+* The required attribute is used to make a field either optional or mandatory. If it is mandatory, an exception will in case of missing fields.
+* The value attribute is similar to name elements and can be used as an alias.
+* defaultVAlue for the parameter is to handle missing values or null values. If the parameter does not contain any value then this default value will be considered.
+ 
+@PathVariable Annotation:-
+-------------------------
+* The @PathVariable annotation is used to extract the value from the URL it is most suitable for the RESTful web service where the URL contains some value. Spring MVC          allows us to use multiple @PathVariable annotations in the same method.
+* For example, if we want to get the value from a requested URI path, then we can use @PathVariable annotation like in below example,
+	http://localhost:8080/holidays/all
+	http://localhost:8080/holidays/federal
+	http://localhost:8080/holidays/festival
+
+	@GetMapping("/holidays/{display}")
+	public String displayHolidays(@PathVariable String display) {
+		return "holidays.html";
+	}
+* The @PathVariable annotation supports attributes like name, required, value similar to @RequestParam. We can use them in our application based on the requirements.
+
+
+Validation With Spring Boot:-
+------------------------------
+* Bean validation is the stadard is for implementing validations in the Java ecosystem. It's well integrated with spring and spring boot.
+* Below is the maven dependency that we can add to implement Bean validations in any spring/springboot project.
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-validation</artifactId>
+	</dependency>
+* Bean validation works by defining constraints to the fields of a class by annotating them with certain annotations.
+* We can pu the @Valid annotation on method parameters and fields to tell spring that we want a method parameter or field to be validated.
+* Below are the important packages where validations related annotations can be identified,
+	* jakarta.validation.constraints.*;
+	* org.hibernate.validator.constraints.*;
+
+
+
+Important Validation Annotations
+
+
+jakarta.validation.constraints.*;				org.hibernate.validator.constraints.*;
+
+@Digits									@CreditCardNumber
+@Email									@Length
+@Max									@Currency
+@Min									@Range
+@NotBlank								@URL
+@NotEmpty								@UniqueElements
+@NotNull								@EAN
+@Pattern								@ISBN
+@Size
+
+
+
+Spring Security:-
+----------------
+* Spring Security is a powerful and highly customizable authentication and access-control framework. It is the de-facto standard for securing Spring-based applications.
+* Below is the maven dependency that we can add to implement security using spring security project in any of the spring boot projects.
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-security</artifactId>
+	</dependency>
+* Spring security is a framework that provides authentication, authorization, and protection against common attacks.
+* Spring Security helps developers with easier configurations to secure a web application by using standard username/password authentication mechanism.
+* Spring Security provides out of the box features to handle common security attacks like CSRF, CORx. it also has good integration with security standards like JWT,        OAUTH2 etc.
+
+
+
+Authentication:-
+----------------
+* In authentication, the identity of users are checked for providing the access to the system.
+* Authentication done before authorization.
+* It needs usually user's login details.
+* If authentication fails usually we will get 401 error response.
+* For example as a bank customer/employee in order to perform actions in the app, we need to prove our identity.
+
+Authorization:-
+--------------
+* In authentication, person's or user's authorities are checked for accessing the resources.
+* Authorization always happens after authentication.
+* It needs user's privilege or roles
+* If authorization fails usually we will get 403 error response.
+* Once logged into the application, my roles, authorities will decide what kiind of actions I can do.
+
+
 
