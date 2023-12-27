@@ -264,4 +264,26 @@ Authorization:-
 * Once logged into the application, my roles, authorities will decide what kiind of actions I can do.
 
 
+Configure Custom Security Congigs & CSRF Disable:-
+--------------------------------------------------
+* We can apply custom security configurations based on our requirements for each API/URL.
+* permitAll() can be used to allow access w/o security and authenticated() can be used to protect a web page/API
+* By default any requests with HTTP methods that can update like POST, PUT  will be stopped with 403 error due to CSRF protection. 
+* Below is the sample configuration that we can do to implement custom security configs and disable CSRF.
 
+
+    @Bean
+    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeHttpRequests()
+                .requestMatchers("/home").permitAll()
+                .requestMatchers("/contact").permitAll()
+                .requestMatchers("/holidays/**").permitAll()
+                .requestMatchers("/saveMsg").permitAll()
+                .requestMatchers("/courses").authenticated()
+                .requestMatchers("/about").permitAll()
+                .requestMatchers("/assets/**").permitAll()
+                .and().formLogin()
+                .and().httpBasic();
+        return http.build();
+    }
